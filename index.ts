@@ -78,15 +78,13 @@ const app = async () => {
     credentialRecordId: credentialRcords[0].id
   })
 
-  await new Promise((resolve) => setTimeout(resolve, 5000))
-  await issuer.modules.credentials.acceptRequest({ credentialRecordId: credentialOffer.credentialRecord.id})
-  await new Promise((resolve) => setTimeout(resolve, 5000))
+  await new Promise((resolve) => setTimeout(resolve, 10000))
 
   // Print crdential payload and data
   const credentials = await holder.modules.credentials.getAll()
   console.log('\n\n\n\n CRED = ', JSON.stringify(credentials, null, 2))
   const credMetaData = await holder.modules.credentials.getFormatData(credentials[0].id)
-  console.log('\n\n\n\n credMetaData = ', JSON.stringify(credMetaData, null, 2))
+  console.log('\n\n\n\n credMetaData = ', JSON.stringify(credMetaData.credential, null, 2))
 
   // Send basic message from holder to issuer
   const holderConnections = await holder.modules.connections.getAll()
