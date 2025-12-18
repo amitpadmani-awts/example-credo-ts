@@ -1,1 +1,1 @@
-Example repo
+Example repository to demonstrate how we can build controllers over credo-ts for training.
